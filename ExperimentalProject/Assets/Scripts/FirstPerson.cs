@@ -37,12 +37,12 @@ public class FirstPerson : MonoBehaviour
         //strafe
         if (Input.GetKey(KeyCode.D))
         {
-            StrafeSpeed = movementSpeed / 2;
+            StrafeSpeed = movementSpeed;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            StrafeSpeed = -movementSpeed / 2;
+            StrafeSpeed = -movementSpeed;
         }
 
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
@@ -53,13 +53,13 @@ public class FirstPerson : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = false;
         maxSpeed = movementSpeed * 2;
     }
 
     void Update()
     {
         CheckKeyInput();
+        //this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(StrafeSpeed, 0, ForwardSpeed);
         transform.Translate(Time.deltaTime * StrafeSpeed, 0, Time.deltaTime * ForwardSpeed);
     }
 }
